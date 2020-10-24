@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class User {
 	 Scanner in = new Scanner(System.in);
 	 
-	 
 	void createAccount(){
 		System.out.println("Enter your username:-");
 		in.nextLine();
