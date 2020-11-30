@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 import login.*;
-import controllers.Adminhandler;
+import controllers.*;
 
 public class Main {
 	
@@ -28,6 +28,11 @@ public class Main {
 	    }
 	}
 	
+	public void userController() {
+		Userhandler userhandler = new Userhandler();
+		userhandler.main();
+	}
+	
 	public static void main(String args[]) throws Exception {
 		Scanner in = new Scanner(System.in);
 		Admin admin = new Admin();
@@ -40,8 +45,9 @@ public class Main {
 	            admin.auth();
 	            break;
 	        case 2:
-	            User user = new User();
-	            user.auth();
+	           //User user = new User();
+	            //user.auth();
+	        	main.userController();
 	            break;
 	    }
 		 if(admin.logedIn) {
