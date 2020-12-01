@@ -8,11 +8,10 @@ public class Admin {
 	    Scanner in = new Scanner(System.in);
 	    public boolean logedIn = false;
 	    public void auth() throws Exception {
-	    System.out.print("\033[H\033[2J");  
-	    System.out.flush();
 	    //dummy username and password    
 	    String adminUsername = "Admin";
 	    String adminPassword = "Password";
+	    System.out.println("<---------------Please Authenticate YourSelf--------------->\n");
 	    System.out.println("Username: ");
 	    String username = in.nextLine(); 
 	    //System.out.println("Password: (You not able to see what you enter due to some security reasons)");
@@ -27,7 +26,7 @@ public class Admin {
 	            return;
 	        }
 	    else{
-	    	System.out.println("Try Again");
+	    	System.out.println("<---------------Try Again--------------->");
 			auth();
 		}	
 	}
