@@ -22,24 +22,36 @@ public class Adminhandler
 			case 1: //System.out.println("Enter Source");
 			try
 			{	
-				//System.out.println("Enter Source");
-				//Scanner sc1 = new Scanner(System.in);
+				System.out.println("Enter Source");
+				Scanner sc1 = new Scanner(System.in);
 				File airways = new File("Airways.txt");
 				if(airways.createNewFile())
 				{
 					System.out.println("BOOKING Through Airways ---->");
 				}
-				else
-				{
-					System.out.println("Airways Mode already CHOSEN and CREATED");
-				}
-				System.out.println("Enter Source");
-				Scanner sc1 = new Scanner(System.in);
-				FileWriter airR = new FileWriter("Airways.txt");
-				String dest1;
-				dest1 = sc1.nextLine();
-				airR.write(dest1+" ");
-				airR.close();							// I have try catch block 'inside' outer 'try' block
+//				else
+//				{
+//					System.out.println("Airways Mode already CHOSEN and CREATED");
+//				}
+//				FileWriter airR = new FileWriter("Airways.txt");
+//				String dest1;
+//				dest1 = sc1.nextLine();
+//				airR.write("Source: "+dest1+"\n");
+//				airR.close();	
+				
+				
+				Scanner scccc1 = new Scanner(System.in);
+				File fileee1 = new File("Airways.txt");
+				FileWriter wrrr1 = null;
+				String sourceee1;
+				sourceee1 = scccc1.nextLine();
+				
+				wrrr1 = new FileWriter(fileee1,true);
+				wrrr1.write(sourceee1+" ");
+				wrrr1.close();
+				
+				
+				// I have try catch block 'inside' outer 'try' block
 				
 				
 				try
@@ -64,13 +76,14 @@ public class Adminhandler
 				
 				try
 				{
-					System.out.println("Enter Cost of Travel");
+//					Random rand = new Random();
+					System.out.println("Distance: ");
 					Scanner sccc1 = new Scanner(System.in);
 					File filee1 = new File("Airways.txt");
 					FileWriter wrr1 = null;
 					String sourcee1;
 					sourcee1 = sccc1.nextLine();
-					
+//					int randDist1 = rand.nextInt();
 					wrr1 = new FileWriter(filee1,true);
 					wrr1.write(sourcee1+"\n");
 					wrr1.close();
@@ -96,10 +109,10 @@ public class Adminhandler
 				{
 					System.out.println("BOOKING Through Railways ---->");
 				}
-				else
-				{
-					System.out.println("Railways Mode already CHOSEN and CREATED");
-				}
+//				else
+//				{
+//					System.out.println("Railways Mode already CHOSEN and CREATED");
+//				}
 				FileWriter railR = new FileWriter("Railways.txt");
 				String dest2;
 				dest2 = sc2.nextLine();
@@ -116,7 +129,7 @@ public class Adminhandler
 					source2 = scc2.nextLine();
 					
 					wr2 = new FileWriter(file2,true);
-					wr2.write(source2+" ");
+					wr2.write(source2+"\n");
 					wr2.close();
 				}
 				
@@ -128,7 +141,7 @@ public class Adminhandler
 				
 				try
 				{
-					System.out.println("Enter Cost of Travel");
+					System.out.println("Distance");
 					Scanner sccc2 = new Scanner(System.in);
 					File filee2 = new File("Railways.txt");
 					FileWriter wrr2 = null;
@@ -136,7 +149,7 @@ public class Adminhandler
 					sourcee2 = sccc2.nextLine();
 					
 					wrr2 = new FileWriter(filee2,true);
-					wrr2.write(sourcee2+"\n");
+					wrr2.write(/*"Cost: "+*/sourcee2+"\n");
 					wrr2.close();
 				}
 				
@@ -160,14 +173,14 @@ public class Adminhandler
 				{
 					System.out.println("BOOKING Through Roadways ---->");
 				}
-				else
-				{
-					System.out.println("Roadways Mode already CHOSEN and CREATED");
-				}
+//				else
+//				{
+//					System.out.println("Roadways Mode already CHOSEN and CREATED");
+//				}
 				FileWriter roadR = new FileWriter("Roadways.txt");
 				String dest3;
 				dest3 = sc3.nextLine();
-				roadR.write(dest3+" ");
+				roadR.write(/*"Source: "+*/dest3+" ");
 				roadR.close();
 				
 				try
@@ -180,7 +193,7 @@ public class Adminhandler
 					source3 = scc3.nextLine();
 					
 					wr3 = new FileWriter(file3,true);
-					wr3.write(source3+" ");
+					wr3.write(/*"Destination: "+*/source3+" ");
 					wr3.close();
 				}
 				
@@ -192,7 +205,7 @@ public class Adminhandler
 				
 				try
 				{
-					System.out.println("Enter Cost of Travel");
+					System.out.println("Enter Distance: ");
 					Scanner sccc3 = new Scanner(System.in);
 					File filee3 = new File("Roadways.txt");
 					FileWriter wrr3 = null;
@@ -355,6 +368,18 @@ public class Adminhandler
 	      default:
 	        		System.out.println("LOGGED OUT OF ADMIN");
 	    }
+		 Scanner abc = new Scanner(System.in);
+		 System.out.println("1. Add a Record");
+			System.out.println("2. Update a Record");
+			System.out.println("3. Delete a Record");
+			System.out.println("4. Print a Record");
+			System.out.println("5. EXIT from ADMIN");
+			userChoice = abc.nextInt();
+			while(userChoice<=5)
+			{
+				choiceSelector(userChoice);
+				
+			}
 	}
 		 
 		 
@@ -366,15 +391,23 @@ public class Adminhandler
 			System.out.println("5. EXIT from ADMIN");
 			Scanner abc = new Scanner(System.in);
 			int userChoice = abc.nextInt();
-			while(userChoice<=5)
+			switch(userChoice)
 			{
+			case 1:
+			choiceSelector(userChoice);
+			break;
+			case 2:
 				choiceSelector(userChoice);
-				
-			}
-				
-				if(userChoice == 9)
-				{
-					System.out.println("LOGGED OUT FROM USER");
+				break;
+			case 3:
+				choiceSelector(userChoice);
+				break;
+			case 4:
+				choiceSelector(userChoice);
+				break;
+			case 5:
+				choiceSelector(userChoice);
+				break;
 				}
 		 
 	}
