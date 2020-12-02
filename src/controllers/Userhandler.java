@@ -13,30 +13,72 @@ public class Userhandler
     {
      Scanner in = new Scanner(System.in);
      //Userhandler userHandler=new Userhandler();
-	 System.out.println("WELCOME !!");
+	 System.out.println("<---------------WELCOME--------------->");
 	System.out.println("1. Previous Record");
 	System.out.println("2. Book Ticket");
     int choice=in.nextInt();
     switch(choice)
 	{
 		case 1:
-		//userHandler.PreviousRecord();
+		Userhandler.previousRecord();
 		break;
 		case 2:
 		BookTicket();
 		break;
 		default:
-		System.out.println("Select a choice");
+		System.out.println("Select a Choice");
 	}
     }
-    
+    static void generateTicket()
+	{
+	    Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Name of File(.txt)");
+		String filename;
+		filename = sc.nextLine();
+		try
+		{
+		FileReader br1 = new FileReader(filename);
+		Scanner a = new Scanner(br1);
+		while(a.hasNextLine())
+		{
+			System.out.println(a.nextLine());
+		}
+		//br1.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error");
+		}
+	}
+    static void previousRecord()
+	{
+	    Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Name of File(.txt)");
+		String filename;
+		filename = sc.nextLine();
+		try
+		{
+		FileReader br1 = new FileReader(filename);
+		Scanner a = new Scanner(br1);
+		while(a.hasNextLine())
+		{
+			System.out.println(a.nextLine());
+		}
+		//br1.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error");
+		}
+	    
+	}
     static void BookTicket()
 	{
 		
 		String a1,b1,c1;
 		int god;
 		Scanner in = new Scanner(System.in);
-		System.out.println("Enter Your Name");			
+		System.out.println("Enter Your Name(.txt)");			
 		String username = in.nextLine();
 		try
 		{
@@ -45,11 +87,11 @@ public class Userhandler
 		
 		if(user1.createNewFile())
 		{
-			System.out.println("NAME is stored in "+username);
+			System.out.println("File Created with Name "+username);
 		}
 		
 		else
-			System.out.println("User with this name already exists");
+			System.out.println("User Already Exists!!");
 		
 		
 		FileWriter use = new FileWriter(username);
@@ -94,7 +136,7 @@ public class Userhandler
 			  //  System.out.println("Road");
 				try
 				{
-					System.out.println("Roadways");
+					System.out.println("<---------------Welcome to Roadways--------------->");
 					//int age = in.nextInt();
 					Scanner h = new Scanner(System.in);				
 					File file2 = new File(username);				
@@ -114,7 +156,7 @@ public class Userhandler
 				// newly added
 			    try
 			    {	
-			    	System.out.println("Try is running");
+			    	//System.out.println("Try is running");
 				    File file = new File("Roadways.txt");
 			    	FileReader userR = new FileReader(file);
 					BufferedReader br = new BufferedReader(userR);
@@ -125,7 +167,7 @@ public class Userhandler
 					while((line=br.readLine())!=null)
 					{
 						String[] words = line.split(" ");
-						System.out.println(words[0]+" "+words[1]+" "+words[2]+" ");
+						//System.out.println(words[0]+" "+words[1]+" "+words[2]+" ");
 						
 						int change = Integer.parseInt(words[2]); 
 						obj.CreateGraph(words[0],words[1],change);
@@ -146,7 +188,7 @@ public class Userhandler
 				{	
 					String input1;
 					Scanner p = new Scanner(System.in);
-					System.out.println("Enter source: ");
+					System.out.println("Enter Source: ");
 					input1 = p.nextLine();									
 					File file2 = new File(username);				
 					FileWriter u = null;
@@ -159,7 +201,7 @@ public class Userhandler
 					
 					String input2;
 					Scanner p1 = new Scanner(System.in);
-					System.out.println("Enter destination: ");
+					System.out.println("Enter Destination: ");
 					input2 = p1.nextLine();									
 					File fileE2 = new File(username);				
 					FileWriter u2 = null;
@@ -178,6 +220,26 @@ public class Userhandler
 				System.out.println("Error");
 				}
 				
+				try
+				{
+					//System.out.println("Roadways");
+					//int age = in.nextInt();
+					Scanner h = new Scanner(System.in);				
+					File file2 = new File(username);				
+					FileWriter u = null;
+					//String cost = "Cost";	
+					
+					double cost;
+					cost = obj.x;
+					u = new FileWriter(file2,true);
+					u.write("Cost of Journey: "+cost+"\n");
+					u.close();
+				}
+				
+				catch(Exception e)
+				{
+					System.out.println("Error");
+				}
 
 			break;
 			
@@ -186,7 +248,7 @@ public class Userhandler
 				Graph obj1 = new Graph();
 				try
 				{
-					System.out.println("Railways");
+					System.out.println("<---------------Welcome to Railways--------------->");
 					//int age = in.nextInt();
 					Scanner h = new Scanner(System.in);				
 					File file2 = new File(username);				
@@ -211,7 +273,7 @@ public class Userhandler
 					BufferedReader br = new BufferedReader(userR);
 //					StringBuffer sb = new StringBuffer();
 					String line;
-					System.out.println("I m huere ----->");
+					//System.out.println("I m huere ----->");
 					
 					while((line=br.readLine())!=null)
 					{
@@ -221,7 +283,7 @@ public class Userhandler
 						int change = Integer.parseInt(words[2]); 
 						obj1.CreateGraph(words[0],words[1],change);
 					}
-					obj1.DisplayGraph();
+					//obj1.DisplayGraph();
 					userR.close();
 			    }
 			    
@@ -237,7 +299,7 @@ public class Userhandler
 				{	
 					String input1;
 					Scanner p = new Scanner(System.in);
-					System.out.println("Enter source: ");
+					System.out.println("Enter Source: ");
 					input1 = p.nextLine();									
 					File file2 = new File(username);				
 					FileWriter u = null;
@@ -249,7 +311,7 @@ public class Userhandler
 					u.close();
 
 					String input2;
-					System.out.println("Enter destination: ");
+					System.out.println("Enter Destination: ");
 					input2 = p.nextLine();									
 					File filee2 = new File(username);				
 					FileWriter u2 = null;
@@ -257,8 +319,8 @@ public class Userhandler
 					//input1 = p.nextLine();
 					
 					u = new FileWriter(filee2,true);
-					u2.write("Destination: "+input2+"\n");
-					u2.close();
+					u.write("Destination: "+input2+"\n");
+					u.close();
 					
 					obj1.shortestPath(input1, input2);
 				}
@@ -268,15 +330,36 @@ public class Userhandler
 				System.out.println("Error");
 				}
 				
+				try
+				{
+					//System.out.println("Roadways");
+					//int age = in.nextInt();
+					Scanner h = new Scanner(System.in);				
+					File file2 = new File(username);				
+					FileWriter u = null;
+					//String cost = "Cost";	
+					
+					double cost;
+					cost = obj1.x;
+					u = new FileWriter(file2,true);
+					u.write("Cost of Journey: "+cost+"\n");
+					u.close();
+				}
+				
+				catch(Exception e)
+				{
+					System.out.println("Error");
+				}
+				
 			break;
 			
 			
 			case 3:
 				
-				Graph obj2 = new Graph();
+				Graph obj22 = new Graph();
 				try
 				{
-					System.out.println("Airways");
+					System.out.println("<---------------Welcome To Airways--------------->");
 					//int age = in.nextInt();
 					Scanner h = new Scanner(System.in);				
 					File file2 = new File(username);				
@@ -309,10 +392,10 @@ public class Userhandler
 //						System.out.println(words[0]+" ");
 						
 						int change = Integer.parseInt(words[2]); 
-						obj2.CreateGraph(words[0],words[1],change);
+						obj22.CreateGraph(words[0],words[1],change);
 						
 					}
-					obj2.DisplayGraph();
+					//obj22.DisplayGraph();
 					userR.close();
 			    }
 			    
@@ -328,7 +411,7 @@ public class Userhandler
 				{	
 					String input1;
 					Scanner p = new Scanner(System.in);
-					System.out.println("Enter source: ");
+					System.out.println("Enter Source: ");
 					input1 = p.nextLine();									
 					File file2 = new File(username);				
 					FileWriter u = null;
@@ -340,7 +423,7 @@ public class Userhandler
 					u.close();
 
 					String input2;
-					System.out.println("Enter destination: ");
+					System.out.println("Enter Destination: ");
 					input2 = p.nextLine();									
 					File filee2 = new File(username);				
 					FileWriter u2 = null;
@@ -351,7 +434,7 @@ public class Userhandler
 					u.write("Destination: "+input2+"\n");
 					u.close();
 					
-					obj2.shortestPath(input1, input2);
+					obj22.shortestPath(input1, input2);
 				}
 				
 				catch(Exception e)
@@ -359,10 +442,39 @@ public class Userhandler
 				System.out.println("Error");
 				}
 				
+				try
+				{
+					//System.out.println("Roadways");
+					//int age = in.nextInt();
+					Scanner h = new Scanner(System.in);				
+					File file2 = new File(username);				
+					FileWriter u = null;
+					//String cost = "Cost";	
+					
+					double cost;
+					cost = obj22.x;
+					u = new FileWriter(file2,true);
+					u.write("Cost of Journey: "+cost+"\n");
+					u.close();
+				}
+				
+				catch(Exception e)
+				{
+					System.out.println("Error");
+				}
+				
 			break;
 
 	}
-		System.out.println("Everything called");
+		//System.out.println("Everything called");
+		System.out.println("Do you Wish to Generate Ticket? (1--->Yes | 0--->No)");
+		Scanner abc = new Scanner(System.in);
+		int ab = abc.nextInt();
+		if(ab == 1) {
+			generateTicket();
+		}else {
+			System.out.println("Thank You For Booking!");
+		}
 
 	}
     

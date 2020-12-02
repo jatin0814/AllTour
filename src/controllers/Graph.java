@@ -12,6 +12,7 @@ import java.util.TreeMap;
 
 public class Graph
 {
+	 public double x;
      static HashMap<String,HashMap<String,Integer>> mp=new HashMap<String,HashMap<String,Integer>>();
      static HashMap<String,Integer>dist=new HashMap<String,Integer>();
      static int cnt=0;
@@ -96,7 +97,15 @@ public class Graph
         System.out.println("Source is " + src);
         System.out.println("Destination is " + des);
         System.out.println("Shortest distance between "+ src + " and " + des+ " is " + dist.get(des));
+        System.out.println("Cost between "+ src + " and " + des+ " is " + (dist.get(des))*1.5);
+        x = (dist.get(des))*1.5;
+        giveCost(x);
     }
+     void giveCost(double x)
+     {
+     	double y;
+     	y = x;
+     }
     static void DeleteNode(String src,String des)
     {
         if(!mp.containsKey(src))
@@ -119,10 +128,7 @@ public class Graph
         temp=mp.get(src);
         temp.put(des,x);
         mp.put(src,temp);
-        
-        
-        
-        
+
     }
    
 }

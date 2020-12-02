@@ -29,16 +29,6 @@ public class Adminhandler
 				{
 					System.out.println("BOOKING Through Airways ---->");
 				}
-//				else
-//				{
-//					System.out.println("Airways Mode already CHOSEN and CREATED");
-//				}
-//				FileWriter airR = new FileWriter("Airways.txt");
-//				String dest1;
-//				dest1 = sc1.nextLine();
-//				airR.write("Source: "+dest1+"\n");
-//				airR.close();	
-				
 				
 				Scanner scccc1 = new Scanner(System.in);
 				File fileee1 = new File("Airways.txt");
@@ -113,11 +103,13 @@ public class Adminhandler
 //				{
 //					System.out.println("Railways Mode already CHOSEN and CREATED");
 //				}
-				FileWriter railR = new FileWriter("Railways.txt");
+				File file = new File("Railways.txt");
+				FileWriter wr = null;
 				String dest2;
 				dest2 = sc2.nextLine();
-				railR.write(dest2+" ");
-				railR.close();
+				wr = new FileWriter(file,true);
+				wr.write(dest2+" ");
+				wr.close();
 				
 				try
 				{
@@ -129,7 +121,7 @@ public class Adminhandler
 					source2 = scc2.nextLine();
 					
 					wr2 = new FileWriter(file2,true);
-					wr2.write(source2+"\n");
+					wr2.write(source2+" ");
 					wr2.close();
 				}
 				
@@ -149,7 +141,7 @@ public class Adminhandler
 					sourcee2 = sccc2.nextLine();
 					
 					wrr2 = new FileWriter(filee2,true);
-					wrr2.write(/*"Cost: "+*/sourcee2+"\n");
+					wrr2.write(sourcee2+"\n");
 					wrr2.close();
 				}
 				
@@ -177,11 +169,14 @@ public class Adminhandler
 //				{
 //					System.out.println("Roadways Mode already CHOSEN and CREATED");
 //				}
-				FileWriter roadR = new FileWriter("Roadways.txt");
+				File fileee3 = new File("Roadways.txt");
+				FileWriter wrr = null;
 				String dest3;
 				dest3 = sc3.nextLine();
-				roadR.write(/*"Source: "+*/dest3+" ");
-				roadR.close();
+				
+				wrr = new FileWriter(fileee3,true);
+				wrr.write(dest3+" ");
+				wrr.close();
 				
 				try
 				{
@@ -193,7 +188,7 @@ public class Adminhandler
 					source3 = scc3.nextLine();
 					
 					wr3 = new FileWriter(file3,true);
-					wr3.write(/*"Destination: "+*/source3+" ");
+					wr3.write(source3+" ");
 					wr3.close();
 				}
 				
@@ -386,7 +381,7 @@ public class Adminhandler
 		 public void main() {
 			System.out.println("1. Add a Record");
 			System.out.println("2. Update a Record");
-			System.out.println("3. Delete a Record");
+			System.out.println("3. Delete File");
 			System.out.println("4. Print a Record");
 			System.out.println("5. EXIT from ADMIN");
 			Scanner abc = new Scanner(System.in);
