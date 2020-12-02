@@ -38,7 +38,7 @@ public class Adminhandler
 				FileWriter airR = new FileWriter("Airways.txt");
 				String dest1;
 				dest1 = sc1.nextLine();
-				airR.write("Source: "+dest1+"\n");
+				airR.write(dest1+" ");
 				airR.close();							// I have try catch block 'inside' outer 'try' block
 				
 				
@@ -52,7 +52,7 @@ public class Adminhandler
 					source1 = scc1.nextLine();
 					
 					wr1 = new FileWriter(file1,true);
-					wr1.write("Destination: "+source1+"\n");
+					wr1.write(source1+" ");
 					wr1.close();
 				}
 				
@@ -72,7 +72,7 @@ public class Adminhandler
 					sourcee1 = sccc1.nextLine();
 					
 					wrr1 = new FileWriter(filee1,true);
-					wrr1.write("Cost: "+sourcee1+"\n");
+					wrr1.write(sourcee1+"\n");
 					wrr1.close();
 				}
 				
@@ -103,7 +103,7 @@ public class Adminhandler
 				FileWriter railR = new FileWriter("Railways.txt");
 				String dest2;
 				dest2 = sc2.nextLine();
-				railR.write("Source: "+dest2+"\n");
+				railR.write(dest2+" ");
 				railR.close();
 				
 				try
@@ -116,7 +116,7 @@ public class Adminhandler
 					source2 = scc2.nextLine();
 					
 					wr2 = new FileWriter(file2,true);
-					wr2.write("Destination: "+source2+"\n");
+					wr2.write(source2+" ");
 					wr2.close();
 				}
 				
@@ -136,7 +136,7 @@ public class Adminhandler
 					sourcee2 = sccc2.nextLine();
 					
 					wrr2 = new FileWriter(filee2,true);
-					wrr2.write("Cost: "+sourcee2+"\n");
+					wrr2.write(sourcee2+"\n");
 					wrr2.close();
 				}
 				
@@ -167,7 +167,7 @@ public class Adminhandler
 				FileWriter roadR = new FileWriter("Roadways.txt");
 				String dest3;
 				dest3 = sc3.nextLine();
-				roadR.write("Source: "+dest3+"\n");
+				roadR.write(dest3+" ");
 				roadR.close();
 				
 				try
@@ -180,7 +180,7 @@ public class Adminhandler
 					source3 = scc3.nextLine();
 					
 					wr3 = new FileWriter(file3,true);
-					wr3.write("Destination: "+source3+"\n");
+					wr3.write(source3+" ");
 					wr3.close();
 				}
 				
@@ -200,7 +200,7 @@ public class Adminhandler
 					sourcee3 = sccc3.nextLine();
 					
 					wrr3 = new FileWriter(filee3,true);
-					wrr3.write("Cost: "+sourcee3+"\n");
+					wrr3.write(sourcee3+"\n");
 					wrr3.close();
 				}
 				
@@ -278,7 +278,22 @@ public class Adminhandler
 		
 	}
 	
-	
+	static void seeRecord(String filepath)
+	{
+		try
+		{
+		FileReader cr = new FileReader(filepath);
+		Scanner sc = new Scanner(cr);
+		while(sc.hasNextLine())
+		{
+			System.out.println(sc.nextLine());
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error");
+		}
+	}
 	
 	static void deleteRecord(String filename)
 	{
@@ -298,9 +313,7 @@ public class Adminhandler
 	
 	
 	static void choiceSelector(int userChoice)
-	{
-		Scanner abc = new Scanner(System.in);
-	
+	{	
 		 switch(userChoice)
 		{
 	        case 1:
@@ -333,38 +346,37 @@ public class Adminhandler
 				deleteRecord(filename);
 	        	break;
 	        	
+	        case 4 : 
+	        	System.out.println("Enter name of file");
+	        	Scanner c = new Scanner(System.in);
+	        	String filepath = c.nextLine();
+	        	seeRecord(filepath);
+	        	
 	      default:
 	        		System.out.println("LOGGED OUT OF ADMIN");
 	    }
+	}
+		 
+		 
+		 public void main() {
 			System.out.println("1. Add a Record");
 			System.out.println("2. Update a Record");
 			System.out.println("3. Delete a Record");
-			System.out.println("4. Hit 0 to EXIT");
-			userChoice = abc.nextInt();
-			while(userChoice!=0)
+			System.out.println("4. Print a Record");
+			System.out.println("5. EXIT from ADMIN");
+			Scanner abc = new Scanner(System.in);
+			int userChoice = abc.nextInt();
+			while(userChoice<=5)
 			{
 				choiceSelector(userChoice);
+				
 			}
-			if(userChoice == 0)
-			{
-				System.out.println("LOGGED OUT OF ADMIN");
-			}
-			
-	}
-	
-	public void main() 
-	{
-
-		System.out.println("<---------------Welcome Admin--------------->\n");
-			Scanner ab = new Scanner(System.in);
-			System.out.println("1. Add a Record");
-			System.out.println("2. Update a Record");
-			System.out.println("3. Delete a Record");
-			System.out.println("4. Hit 0 to EXIT");
-			int userChoice = ab.nextInt();
-			choiceSelector(userChoice);		
-
-
+				
+				if(userChoice == 9)
+				{
+					System.out.println("LOGGED OUT FROM USER");
+				}
+		 
 	}
 
 }
